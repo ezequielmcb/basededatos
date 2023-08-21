@@ -88,7 +88,7 @@
                     <div class="pass">
                         <label for="password"></label>
                         <i class="lock fa-solid fa-lock"></i>
-                        <input type="password" id="password" name="contrasena" placeholder="Password">
+                        <input type="password" id="password" minlength="8" name="contrasena" placeholder="Password">
                     </div>
                     <div class="divB">
                         <button type="submit" name="registrar" class="button">Start coding now</button>

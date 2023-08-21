@@ -30,9 +30,27 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $_SESSION["user_data"] = $stmt->fetch_assoc();
     }
 
-    header("location: ../views/perfil.php");
+    header("location: ../views/editar.php");
 
 }else{
     echo "No estas accediendo por el metodo post";
 }
     
+if(isset($_FILES["image"])){
+    // 1. RUTA TEMPORAL DEL ARCHIVO
+      $tempo = $_FILES["image"]["tmp_name"];
+      
+      // 2. RUTA DEL DESTINO
+      $desti ="img/" . $_FILES["image"]["name"];
+  
+      // 3. MOVER ARCHIVO
+      move_uploaded_file($tempo, $desti);
+  
+      // 4. SUBIR LA RUTA DEL ARCHIVO A LA BASE DE DATOS
+      require_once("connect.php");
+      $desdb= "../acctions/img/" . $_FILES["image"]["name"];
+  
+      $mysqli->query("UPDATE usuario SET photo='$desdb' WHERE id='$idUser';");
+  
+      header("location: ../views/perfil.php");
+  }

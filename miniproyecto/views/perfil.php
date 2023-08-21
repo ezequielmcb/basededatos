@@ -7,6 +7,16 @@ if (!isset($_SESSION["user_data"])) {
 // var_dump($_POST["user_data"]);
 $data = $_SESSION["user_data"];
 
+require_once("../acctions/connect.php");
+
+$stmt = $mysqli->query("SELECT * FROM usuario;");
+
+while ($row = $stmt->fetch_assoc()) {
+    if (isset($row["photo"])) {
+        $route = $row["photo"];
+    }
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -50,9 +60,9 @@ $data = $_SESSION["user_data"];
 
                 </span>
                 <div>
-                    <div class="imgName">
-                        <img class="img" src="../imgs/luffy.jpg" alt="">
-                        <p id="toggleButton"><?= ($data['name'])?></p>
+                    <div id="toggleButton" class="imgName">
+                        <img class="img" src="<?= isset($route) ? $route : '../imgs/ingresa.jpg'; ?>" alt="perfil">
+                        <p id="name"><?= ($data['name'])?></p>
                     </div>
                     <div class="hidden">
                         <a href="../views/perfil.php" class="cajita person">
@@ -85,27 +95,27 @@ $data = $_SESSION["user_data"];
                 <div class="infoUser">
                     <div class="info foto">
                         <h1 class="user">PHOTO</h1>
-                        <img src="../imgs/luffy.jpg" alt="">
+                        <img class="dataUser" src="<?= isset($route) ? $route : '../imgs/ingresa.jpg'; ?>" alt="perfil">
                     </div>
                     <div class="info name">
                         <h1 class="user">NAME</h1>
-                        <p><?= ($data['name'])?> </p>
+                        <p class="dataUser"><?= ($data['name'])?> </p>
                     </div>
                     <div class="info bio">
                         <h1 class="user">BIO</h1>
-                        <p><?= ($data['bio'])?></p>
+                        <p class="dataUser"><?= ($data['bio'])?></p>
                     </div>
                     <div class="info phone">
                         <h1 class="user">PHONE</h1>
-                        <p><?= ($data['phone'])?></p>
+                        <p class="dataUser"><?= ($data['phone'])?></p>
                     </div>
                     <div class="info email">
                         <h1 class="user">EMAIL</h1>
-                        <p><?= ($data['email'])?></p>
+                        <p class="dataUser"><?= ($data['email'])?></p>
                     </div>
                     <div class="info pass">
                         <h1 class="user">PASSWORD</h1>
-                        <p>*********</p>
+                        <p class="dataUser">*********</p>
                     </div>
                 </div>
             </div>

@@ -16,13 +16,25 @@ body {
 .icnoImg {
     display: flex;
     justify-content: space-between;
-    width: 100%;
+    width: 94%;
+    position: absolute;
+    top: 15px;
+    bottom: 0;
+    left: 10px;
+    right: 0;
+    height: 5vh;
 }
 
-.imgName{
+.caja{ 
+    margin-top: 50px
+}
+
+.imgName {
     display: flex;
     align-items: center;
     gap: 10px;
+    cursor: pointer;
+    margin-left: 1rem;
 }
 
 .hidden{
@@ -111,7 +123,7 @@ body {
     margin-top: 20px;
     display: flex;
     align-items: center;
-    gap: 25px;
+    gap: 20px;
 }
 
 .inputImg {
@@ -127,6 +139,8 @@ body {
 .foto{
     position: relative;
     cursor: pointer;
+    height: 72px;
+    width: 72px;
 }
 
 .foto > img:first-child{
@@ -137,6 +151,8 @@ body {
 
 #forma{
     object-fit: cover;
+    height: 72px;
+    width: 72px;
 }
 
 .foto >div {
@@ -153,8 +169,12 @@ body {
 }
 
 .foto > div >img{
-    height: 24px;
-    width: 24px;
+    height: 72px;
+    width: 72px;
+}
+
+.camara{
+    padding: 30%;
 }
 
 .llenar{
@@ -219,7 +239,7 @@ input[type="number"]::-webkit-outer-spin-button {
     color: #828282;
 }
 
-#toggleButton{
+#name{
     font-size: 12px;
     font-weight: 700;
     color: #333333;
@@ -230,7 +250,23 @@ a{
     text-decoration: none;
 }
 
+.change{
+    font-size: 13px;
+    font-weight: 500;
+    color: #828282;
+}
+
+
 @media screen and (min-width: 1280px) {
+    body{
+        display: flex;
+        justify-content: center;
+    }
+
+    .divAll{
+        width: 1280px;
+    }
+
     .secInicial{
         display: flex;
         align-items: center;

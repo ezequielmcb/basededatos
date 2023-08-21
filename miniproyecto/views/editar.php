@@ -6,6 +6,17 @@ if (!isset($_SESSION["user_data"])) {
 }
 
 $data = $_SESSION["user_data"];
+
+require_once("../acctions/connect.php");
+
+$stmt = $mysqli->query("SELECT * FROM usuario;");
+
+while ($row = $stmt->fetch_assoc()) {
+    if (isset($row["photo"])) {
+        $route = $row["photo"];
+    } 
+}
+// var_dump($route);
 ?>
 
 <!DOCTYPE html>
@@ -28,7 +39,6 @@ $data = $_SESSION["user_data"];
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;600&display=swap" rel="stylesheet">
 
 </head>
-
 <body>
     <div class="divAll">
         <section class="secInicial">
@@ -56,9 +66,9 @@ $data = $_SESSION["user_data"];
 
                 </span>
                 <div>
-                    <div class="imgName">
-                        <img class="img" src="../imgs/luffy.jpg" alt="">
-                        <p id="toggleButton"><?= ($data['name'])?></p>
+                    <div id="toggleButton" class="imgName">
+                    <img class="img" src="<?= isset($route) ? $route : '../imgs/ingresa.jpg'; ?>" alt="Image">
+                        <p id="name"><?= ($data['name']) ?></p>
                     </div>
                     <div class="hidden">
                         <a href="../views/perfil.php" class="cajita person">
@@ -81,48 +91,50 @@ $data = $_SESSION["user_data"];
                     <a href="perfil.php">
                         < Back</a>
                 </div>
-                <section class="sectionEdit">
+                <form action="../acctions/upuser.php" enctype="multipart/form-data" method="post" class=" sectionEdit">
                     <div class="intro">
                         <h1>Change Info</h1>
                         <P>Changes will be reflected to every services</P>
                     </div>
                     <div class="divImg">
-                        <label class="foto">
-                            <img src="../imgs/luffy.jpg" id="forma" alt="">
+                        <label class="foto" for="img">
+                            <img src="<?= isset($route) ? $route : '../imgs/ingresa.jpg'; ?>" id="forma" class="photoData" alt="photo">
                             <div>
                                 <img class="camara" src="../imgs/camara.svg" alt="">
                             </div>
                         </label>
-                        <input class="inputImg" type="text" value="CHANGE PHOTO" disabled>
+                        <input class="inputImg" type="file" id="img" name="image" accept="image/*" hidden>
+                        <p class="change" >CHANGE PHOTO</p>
                     </div>
-                    <form action="../acctions/upuser.php" method="post" class="llenar">
+                    <section class="llenar">
                         <div class="info">
                             <label for="name">Name</label>
-                            <input type="text" name="name" id="name" value="<?= ($data['name']) ?>">
+                            <input type="text" name="name" id="name" placeholder="Ingresa tu nombre" value="<?php isset($data['name']) ? print($data['name']) : print('') ?>">
                         </div>
                         <div class="info bio">
                             <label for="bio">Bio</label>
-                            <input type="text" name="bio" id="bio" value="<?= ($data['bio']) ?>">
+                            <input type="text" name="bio" id="bio" placeholder="Ingresa tu biografia" value="<?php isset($data['bio']) ? print($data['bio']) : print('') ?>">
                         </div>
                         <div class="info">
                             <label for="phone">Phone</label>
-                            <input type="number" name="phone" id="phone" value="<?= ($data['phone']) ?>">
+                            <input type="number" minlength="8" name="phone" id="phone" placeholder="Ingresa tu numero" value="<?= ($data['phone']) ?>">
                         </div>
                         <div class="info">
                             <label for="email">Email</label>
-                            <input type="email" name="email" id="email" value="<?= ($data['email']) ?>">
+                            <input type="email" name="email" id="email" placeholder="Ingresa tu email" value="<?= ($data['email']) ?>">
                         </div>
-                        <div class="info">
+                        <div class="info" id="pass">
                             <label for="psswrd">Password</label>
-                            <input type="psswrd" name="psswrd" id="psswrd" placeholder="********">
+                            <input type="password" minlength="8" name="psswrd" id="psswrd" placeholder="Cambiar contraseña" value="********">
                         </div>
                         <button class="boton" type="submit">Save</button>
-                    </form>
 
-                </section>
+                    </section>
+                </form>
                 <div class="dataP">
                     <h1>Created by <b>Ezequiel Cespedes</b></h1>
                     <p>devChallenges.io</p>
+
                 </div>
             </div>
         </section>

@@ -8,32 +8,42 @@ body {
     font-family: 'Noto Sans', sans-serif;
 }
 
-a{
+a {
     text-decoration: none;
 }
 
 .secInicial {
     height: 100vh;
     padding: 20px;
+    margin-top: 4rem;
 }
 
 .icnoImg {
     display: flex;
     justify-content: space-between;
-    width: 100%;
+    width: 94%;
+    position: absolute;
+    top: 15px;
+    bottom: 0;
+    left: 10px;
+    right: 0;
+    height: 5vh;
 }
 
-.imgName{
+.imgName {
     display: flex;
     align-items: center;
     gap: 10px;
+    cursor: pointer;
+    margin-left: 1rem;
 }
 
-.hidden{
+.hidden {
+    margin-top: 20px;
     display: none;
 }
 
-.doggel{
+.doggel {
     display: flex;
     flex-direction: column;
     margin-top: 10px;
@@ -41,14 +51,15 @@ a{
     border-radius: 12px;
     padding: 1px;
 }
-.cajita{    
+
+.cajita {
     display: flex;
     align-items: center;
     gap: 8px;
     padding: 20px 40px;
 }
 
-.cajita > p {
+.cajita>p {
     font-size: 12px;
     font-weight: 500;
     color: #4f4f4f;
@@ -56,24 +67,24 @@ a{
     cursor: pointer;
 }
 
-.cajita:hover{
+.cajita:hover {
     background-color: #E0E0E0;
     cursor: pointer;
     border-radius: 8px;
-} 
-
-.logout{
-    margin-bottom: 5px;
-    border-top: 1px solid  #E0E0E0;
-    color:#EB5757;
 }
 
-.cajita > img {
+.logout {
+    margin-bottom: 5px;
+    border-top: 1px solid #E0E0E0;
+    color: #EB5757;
+}
+
+.cajita>img {
     height: 23px;
     width: 19px;
 }
 
-.person > img{
+.person>img {
     background-color: #4E4E4E;
     border-radius: 100%;
     height: 25px;
@@ -87,19 +98,25 @@ a{
 }
 
 .infoPersonal {
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
 }
 
-.infoPersonal > h1 {
+.informacionUser {
+    position: relative;
+}
+
+
+.infoPersonal>h1 {
     font-size: 36px;
     font-weight: 400;
     color: #000000;
 }
 
-.infoPersonal > p {
+.infoPersonal>p {
     margin-top: 10px;
     font-size: 18px;
     font-weight: 300;
@@ -113,14 +130,14 @@ a{
     margin-top: 35px;
 }
 
-.divPorfile > h1 {
+.divPorfile>h1 {
     font-size: 24px;
     font-weight: 600;
     color: #000000;
     margin-top: 5px;
 }
 
-.divPorfile > P {
+.divPorfile>P {
     font-size: 13px;
     font-weight: 500;
     color: #828282;
@@ -137,7 +154,7 @@ a{
     border-radius: 12px;
     font-size: 16px;
     font-weight: 500;
-    text-decoration: none;   
+    text-decoration: none;
     color: #4E4E4E;
 }
 
@@ -172,9 +189,9 @@ a{
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-}
+} 
 
-#toggleButton{
+#name {
     font-size: 12px;
     font-weight: 700;
     color: #333333;
@@ -182,20 +199,27 @@ a{
 }
 
 @media screen and (min-width: 1280px) {
+    body {
+        display: flex;
+        justify-content: center;
+    }
+
+    .divAll {
+        width: 1280px;
+    }
+
     .informacionUser {
+
         border: 1px solid #828282;
         height: 650px;
-        width: 600px;
-        margin-top: 35px;
+        width: 770px;
         display: flex;
         justify-content: center;
         flex-direction: column;
-        padding: 40px;
         border-radius: 10px;
     }
 
     .secInicial {
-        height: 100vh;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -204,23 +228,50 @@ a{
 
     .profile {
         width: 100%;
-        border-bottom: 1px solid #828282;
+        margin-top: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 28rem;
     }
-    
+
     .infoUser {
         margin-top: 10px;
     }
-    
+
     .divPorfile {
         height: 90px;
     }
 
-    .infoPersonal > h1 {
+    .infoPersonal>h1 {
         font-size: 36px;
     }
-    
-    .infoPersonal > p {
+
+    .infoPersonal>p {
         font-size: 18px;
+    }
+
+    .info {
+        height: 90px;
+        width: 100%;
+        border-top: 1px solid #828282;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+    }
+
+
+    /* .dataUser {
+        /* margin-right: 27rem    */
+    
+
+    .user {
+        font-size: 13px;
+        font-weight: 500;
+        color: #BDBDBD;
+        display: flex;
+        width: 13rem;
+        margin-left: 2rem;
     }
 
 }
